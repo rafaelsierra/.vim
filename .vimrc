@@ -8,11 +8,8 @@ set nocompatible
 " Fix backspace indent
 set backspace=indent,eol,start
 
-filetype on
-filetype plugin indent on
 
 " Better modes.  Remeber where we are, support yankring
-set viminfo=!,'100,\"100,:20,<50,s10,h,n~/.viminfo
 
 " Tabs. May be overriten by autocmd rules
 set tabstop=4
@@ -42,7 +39,6 @@ endif
 " GREP
 set grepprg=ack
 
-set bomb
 set fileencoding=utf-8
 
 "Directories for swp files
@@ -63,33 +59,11 @@ syntax on
 set ruler
 set number
 
-" Menus I like :-)
-" This must happen before the syntax system is enabled
-aunmenu Help.
-aunmenu Window.
-let no_buffers_menu=1
-set mousemodel=popup
-highlight BadWhitespace ctermbg=red guibg=red
-colorscheme molokai
-set t_Co=256
-set cursorline
-set guioptions=egmrt
-
-" Disable the pydoc preview window for the omni completion
-set completeopt-=preview
-
-" Disable the blinking cursor.
-set gcr=a:blinkon0
-set scrolloff=3
-
 " Status bar
 set laststatus=2
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
 
 " Use modeline overrides
 set modeline
@@ -98,11 +72,6 @@ set modelines=10
 set title
 set titleold="Terminal"
 set titlestring=%F
-
-" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
@@ -130,9 +99,6 @@ cab Q q
 "                                 Variables
 "*****************************************************************************
 "{{{
-" Conf Avelino
-let g:snips_author = "Thiago Avelino"
-
 " python support
 " --------------
 "  don't highlight exceptions and builtins. I love to override them in local
@@ -145,18 +111,6 @@ let python_highlight_builtins=0
 let html_no_rendering=1
 let javascript_enable_domhtmlcss=1
 let c_no_curly_error=1
-
-let g:closetag_default_xml=1
-let g:sparkupNextMapping='<c-l>'
-
-" NERDTree configuration
-let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
-let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
-let NERDTreeShowBookmarks=1
-
-" Command-T configuration
-let g:CommandTMaxHeight=20
 
 " FindFile
 let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*'] 
@@ -367,13 +321,6 @@ nnoremap <C-Down> ]e
 " Bubble multiple lines
 vnoremap <C-Up> [egv
 vnoremap <C-Down> ]egv
-
-" Gundo Toggler
-nnoremap <Leader>u :GundoToggle<CR>
-noremap <leader>c :GundoToggle<CR>
-
-" Tag Code Navigation
-nnoremap <Leader>f :TagbarToggle<CR>
 
 " Find file
 nnoremap <C-f> :FF<CR>
