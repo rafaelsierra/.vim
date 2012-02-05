@@ -1,4 +1,4 @@
-# Avelino's vim Distribution
+# rafaelsdm's vim Distribution
 
 This is a basic distribution of vim plugins and tools intended to be run
 on top of the latest MacVIM snapshot.
@@ -22,12 +22,12 @@ report an issue to the issue tracker.
 
 0. `for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old;
    done`
-1. `git clone git://github.com/avelino/.vimrc.git ~/.vim`
+1. `git clone git://github.com/rafaelsdm/.vimrc.git ~/.vim`
 2. `ln -s ~/.vim/.vimrc ~/.vimrc`
 
 or
 
-  `curl https://raw.github.com/avelino/.vimrc/master/bootstrap.sh -o - | sh`
+  `curl https://raw.github.com/rafaelsdm/.vimrc/master/bootstrap.sh -o - | sh`
 
 ## Updating to the latest version
 
