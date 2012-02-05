@@ -167,89 +167,90 @@ set guitablabel=%{GuiTabLabel()}
 "*****************************************************************************
 "                               Autocmd Rules
 "*****************************************************************************
-"{{{
-" Some minor or more generic autocmd rules
-" The PC is fast enough, do syntax highlight syncing from start
-autocmd BufEnter * :syntax sync fromstart
-" Remember cursor position
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" less comprez
-autocmd BufNewFile,BufRead *.less set filetype=less
-" txt
-au BufRead,BufNewFile *.txt call s:setupWrapping()
-" make use real tabs
-au FileType make set noexpandtab
+  "{{{
+  " Some minor or more generic autocmd rules
+  " The PC is fast enough, do syntax highlight syncing from start
+  autocmd BufEnter * :syntax sync fromstart
+  " Remember cursor position
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  " less comprez
+  autocmd BufNewFile,BufRead *.less set filetype=less
+  " txt
+  au BufRead,BufNewFile *.txt call s:setupWrapping()
+  " make use real tabs
+  au FileType make set noexpandtab
 
 
-"********** Python 
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=110
-      \ formatoptions+=croq softtabstop=4 smartindent
-      \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 
-      \smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-autocmd BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-autocmd BufRead,BufNewFile *.py,*.pyw set expandtab
-autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
-autocmd BufNewFile *.py,*.pyw set fileformat=unix
-autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
-autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
-" code completion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+  "********** Python 
+  highlight BadWhitespace term=standout ctermbg=red guibg=red
+  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=110
+        \ formatoptions+=croq softtabstop=4 smartindent
+        \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+  autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 
+        \smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+  autocmd BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+  autocmd BufRead,BufNewFile *.py,*.pyw set expandtab
+  autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+  autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+  autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
+  autocmd BufNewFile *.py,*.pyw set fileformat=unix
+  autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
+  autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+  autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
+  " code completion
+  autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-"********** Go 
-autocmd BufNewFile,BufRead *.go setlocal ft=go
-autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+  "********** Go 
+  autocmd BufNewFile,BufRead *.go setlocal ft=go
+  autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 
-"********** PHP 
-autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
+  "********** PHP 
+  autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
 
-"********** Verilog 
-autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+  "********** Verilog 
+  autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
-"********** HTML 
-autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html,htmldjango,htmljinja,eruby,mako,haml,daml let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml source ~/.vim/scripts/closetag.vim
-" code completion
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-
-"********** C/Obj-C/C++
-autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-
-"********** vim
-autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
-autocmd FileType vim setlocal foldenable foldmethod=marker
-
-"********** Javascript
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
-autocmd BufNewFile,BufRead *.json setlocal ft=javascript
-" code completion
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-"********** Cmake
-autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
-
-"********** Ruby
-" Thorfile, Rakefile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
-
-"********** Markdown
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
-
-"********** Markdown
-au BufNewFile,BufRead *.dartset filetype=dart shiftwidth=2 expandtab
+  "********** HTML 
+  autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
+  autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+  autocmd FileType html,htmldjango,htmljinja,eruby,mako,haml,daml let b:closetag_html_style=1
+  autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml source ~/.vim/scripts/closetag.vim
+  " code completion
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 
-"}}}
+  "********** C/Obj-C/C++
+  autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+  autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+  autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+
+  "********** vim
+  autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+  autocmd FileType vim setlocal foldenable foldmethod=marker
+
+  "********** Javascript
+  autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
+  autocmd BufNewFile,BufRead *.json setlocal ft=javascript
+  " code completion
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+  "********** Cmake
+  autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+
+  "********** Ruby
+  " Thorfile, Rakefile and Gemfile are Ruby
+  au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
+
+  "********** Markdown
+  " md, markdown, and mk are markdown and define buffer-local preview
+  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
+
+  "********** Markdown
+  au BufNewFile,BufRead *.dartset filetype=dart shiftwidth=2 expandtab
+
+
+  "}}}
 
 
 
@@ -320,8 +321,8 @@ nnoremap <C-Down> ]e
 
 " Bubble multiple lines
 vnoremap <C-Up> [egv
-vnoremap <C-Down> ]egv
 
+vnoremap <C-Down> ]egv
 " Find file
 nnoremap <C-f> :FF<CR>
 nnoremap <C-s> :FS<CR>
@@ -336,7 +337,7 @@ noremap <leader>r :RopeRename<CR>
 
 " Grep
 noremap <leader>g :Ack <C-R>=""<CR>
-noremap <leader>b :b <C-R>=""<CR>
+noremap <leader>b :buffers<CR>:b<space>
 
 "}}}
 
