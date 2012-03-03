@@ -1,3 +1,4 @@
+set nocompatible
 "
 " Mapeamentos
 "
@@ -21,3 +22,18 @@ nmap db :bd
 " Salvar
 imap <leader>s<cr> <esc>:w<cr>a
 
+"
+" Edicao de arquivos
+" 
+set et
+let python_highlight_all = 1
+set sw=4
+set sts=4
+set encoding=utf8
+syntax on
+set number
+set incsearch
+set mouse=v
+
+" Viadagem
+set cursorline
