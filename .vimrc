@@ -14,6 +14,11 @@ nmap tm :tabmove<space>
 nmap t[ :tabprev<cr>
 nmap t] :tabnext<cr>
 
+" Buffers
+nmap bl :ls<cr>
+nmap be bl:b<space>
+nmap ball :ball<cr>
+
 " Remover o arquivo do buffer
 nmap bd :bd<cr>
 " Eu costumo apertar db ao inves de bd, mas nesse caso eu vou ter que apertar enter pra confirmar a cagada
