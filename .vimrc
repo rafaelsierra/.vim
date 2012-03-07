@@ -37,6 +37,7 @@ syntax on
 set number
 set incsearch
 set mouse=v
+set smartindent
 
 " Viadagem
 set cursorline
