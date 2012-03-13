@@ -27,7 +27,7 @@ imap <leader>s<cr> <esc>:w<cr>a
 
 "
 " Edicao de arquivos
-" 
+"
 set et
 let python_highlight_all = 1
 set sw=4
@@ -41,3 +41,9 @@ set smartindent
 
 " Viadagem
 set cursorline
+
+" Pluginhos
+autocmd vimenter * if !argc() | NERDTree | endif
+
+" Remover espacos
+autocmd BufWritePre * :%s/\s\+$//g
