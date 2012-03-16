@@ -36,6 +36,7 @@ set encoding=utf8
 syntax on
 set number
 set incsearch
+set hlsearch
 set mouse=v
 set smartindent
 
@@ -46,4 +47,4 @@ set cursorline
 autocmd vimenter * if !argc() | NERDTree | endif
 
 " Remover espacos
-autocmd BufWritePre * :%s/\s\+$//g
+autocmd BufWritePre * :%s/\s\+$//eg
