@@ -48,3 +48,6 @@ autocmd vimenter * if !argc() | NERDTree | endif
 
 " Remover espacos
 autocmd BufWritePre * :%s/\s\+$//eg
+
+" Valida o arquivo pep8
+autocmd BufWritePost *.py call Flake8()
