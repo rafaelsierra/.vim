@@ -50,4 +50,5 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd BufWritePre * :%s/\s\+$//eg
 
 " Valida o arquivo pep8
+let g:flake8_ignore="E501"
 autocmd BufWritePost *.py call Flake8()
