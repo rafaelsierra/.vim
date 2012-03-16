@@ -45,6 +45,7 @@ set cursorline
 
 " Pluginhos
 autocmd vimenter * if !argc() | NERDTree | endif
+let NERDTreeIgnore = ['\.pyc$']
 
 " Remover espacos
 autocmd BufWritePre * :%s/\s\+$//eg
