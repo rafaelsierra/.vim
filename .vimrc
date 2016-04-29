@@ -59,7 +59,13 @@ colorscheme default
 let NERDTreeIgnore = ['\.pyc$']
 nmap <C-P> :NERDTreeToggle<cr>
 
-autocmd BufWritePre * :%s/\s\+$//eg
+function! RemoveTrailingSpaces()
+    let pos = getpos(".")
+    execute ":%s/\\s\\+$//eg"
+    call setpos(".", pos)
+endfunction
+
+autocmd BufWritePre * call RemoveTrailingSpaces()
 autocmd BufWritePost *.py call Flake8()
 
 
