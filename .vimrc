@@ -6,7 +6,7 @@ execute pathogen#infect()
 " Mapeamentos
 "
 
-" Tab como esc
+" Thou shall not tab!!
 nmap <tab> <esc>
 imap <tab> <esc>
 vmap <tab> <esc>
@@ -17,44 +17,50 @@ nmap tm :tabmove<space>
 nmap t[ :tabprev<cr>
 nmap t] :tabnext<cr>
 nmap <C-PageUp> :tabprev<cr>
-nmap <C-PageDown> :tabprev<cr>
+nmap <C-PageDown> :tabnext<cr>
 
 " Buffers
 nmap bl :ls<cr>
 nmap be bl:b<space>
 nmap ball :ball<cr>
 
-" Remover o arquivo do buffer
 nmap bd :bd<cr>
 
-" Salvar
+
+" Pane navigation
+nmap p<Up> <C-W><C-K>
+nmap p<Down> <C-W><C-J>
+nmap p<Left> <C-W><C-H>
+nmap p<Right> <C-W><C-L>
+
+" Save short cut
 imap <leader>s<cr> <esc>:w<cr>a
 
-"
-" Edicao de arquivos
-"
+" Python standards
 set et
 let python_highlight_all = 1
 set sw=4
 set sts=4
 set encoding=utf8
+
+" Stuff I like
 syntax on
 set number
 set incsearch
 set hlsearch
 set mouse=v
 set smartindent
-
-" Viadagem
 set cursorline
+set lcs=trail:█
+set colorcolumn=100
+colorscheme default
 
-" Pluginhos
+" Plugins configurations
 let NERDTreeIgnore = ['\.pyc$']
 nmap <C-P> :NERDTreeToggle<cr>
 
-" Remover espacos
 autocmd BufWritePre * :%s/\s\+$//eg
-
-" Valida o arquivo pep8
-let g:flake8_ignore="E501"
 autocmd BufWritePost *.py call Flake8()
+
+
+
