@@ -1,4 +1,7 @@
 set nocompatible
+
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 "
 " Mapeamentos
 "
@@ -13,6 +16,8 @@ nmap tn :tabnew<cr>
 nmap tm :tabmove<space>
 nmap t[ :tabprev<cr>
 nmap t] :tabnext<cr>
+nmap <C-PageUp> :tabprev<cr>
+nmap <C-PageDown> :tabprev<cr>
 
 " Buffers
 nmap bl :ls<cr>
@@ -44,8 +49,8 @@ set smartindent
 set cursorline
 
 " Pluginhos
-autocmd vimenter * if !argc() | NERDTree | endif
 let NERDTreeIgnore = ['\.pyc$']
+nmap <C-P> :NERDTreeToggle<cr>
 
 " Remover espacos
 autocmd BufWritePre * :%s/\s\+$//eg
