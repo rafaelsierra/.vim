@@ -11,6 +11,13 @@ nmap <tab> <esc>
 imap <tab> <esc>
 vmap <tab> <esc>
 
+" Navigation
+nmap <S-Up> :-5<cr>
+nmap <S-Down> :+5<cr>
+imap <S-Up> <esc>:-5<cr>a
+imap <S-Down> <esc>:+5<cr>a
+
+
 " Tabs
 nmap tn :tabnew<cr>
 nmap tm :tabmove<space>
