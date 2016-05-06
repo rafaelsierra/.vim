@@ -72,6 +72,12 @@ function! RemoveTrailingSpaces()
     call setpos(".", pos)
 endfunction
 
+function! DosToUnix()
+   edit ++ff=dos
+   setlocal ff=unix
+endfunction
+nmap D@U :call DosToUnix()<cr>
+
 autocmd BufWritePre * call RemoveTrailingSpaces()
 autocmd BufWritePost *.py call Flake8()
 
