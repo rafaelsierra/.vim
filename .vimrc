@@ -55,12 +55,12 @@ syntax on
 set number
 set incsearch
 set hlsearch
-set mouse=v
+set mouse=a
 set smartindent
 set cursorline
 set lcs=trail:█
 set colorcolumn=100
-colorscheme default
+colorscheme tender
 
 " Plugins configurations
 let NERDTreeIgnore = ['\.pyc$']
@@ -73,13 +73,34 @@ function! RemoveTrailingSpaces()
 endfunction
 
 function! DosToUnix()
-   edit ++ff=dos
-   setlocal ff=unix
+    edit ++ff=dos
+    setlocal ff=unix
 endfunction
 nmap D@U :call DosToUnix()<cr>
 
 autocmd BufWritePre * call RemoveTrailingSpaces()
 autocmd BufWritePost *.py call Flake8()
 
-
-
+" Lightline
+set laststatus=2
+if !has('gui_running')
+    set t_Co=256
+endif
+set noshowmode
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+\ },
+\ 'component': {
+\   'readonly': '%{&filetype=="help"?"":&readonly?"☹":""}',
+\   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+\   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+\ },
+\ 'component_visible_condition': {
+\   'readonly': '(&filetype!="help"&& &readonly)',
+\   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+\   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+\ },
+\ }
