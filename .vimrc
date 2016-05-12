@@ -56,7 +56,6 @@ set number
 set incsearch
 set hlsearch
 set mouse=a
-set smartindent
 set cursorline
 set lcs=trail:█
 set colorcolumn=100
