@@ -64,6 +64,7 @@ colorscheme tender
 " Plugins configurations
 let NERDTreeIgnore = ['\.pyc$']
 nmap <C-P> :NERDTreeToggle<cr>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 function! RemoveTrailingSpaces()
     let pos = getpos(".")
@@ -87,19 +88,21 @@ if !has('gui_running')
 endif
 set noshowmode
 let g:lightline = {
-\ 'colorscheme': 'wombat',
-\ 'active': {
-\   'left': [ [ 'mode', 'paste' ],
-\             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-\ },
-\ 'component': {
-\   'readonly': '%{&filetype=="help"?"":&readonly?"☹":""}',
-\   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-\   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-\ },
-\ 'component_visible_condition': {
-\   'readonly': '(&filetype!="help"&& &readonly)',
-\   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-\   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-\ },
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component': {
+    \   'readonly': '%{&filetype=="help"?"":&readonly?"☹":""}',
+    \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \ },
+    \ 'component_visible_condition': {
+    \   'readonly': '(&filetype!="help"&& &readonly)',
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \ },
+    \ 'separator': { 'left': "", 'right': "" },
+    \ 'subseparator': { 'left': "|", 'right': "|" }
 \ }
