@@ -34,3 +34,6 @@
 [submodule "bundle/vim-multiple-cursors"]
 	path = bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "bundle/vim-actionscript"]
+	path = bundle/vim-actionscript
+	url = https://github.com/jeroenbourgois/vim-actionscript.git

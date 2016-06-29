@@ -35,10 +35,10 @@ nmap bd :bd<cr>
 
 
 " Pane navigation
-nmap p<Up> <C-W><C-K>
-nmap p<Down> <C-W><C-J>
-nmap p<Left> <C-W><C-H>
-nmap p<Right> <C-W><C-L>
+nmap P<Up> <C-W><C-K>
+nmap P<Down> <C-W><C-J>
+nmap P<Left> <C-W><C-H>
+nmap P<Right> <C-W><C-L>
 
 " Save short cut
 imap <leader>s<cr> <esc>:w<cr>a
@@ -55,15 +55,18 @@ syntax on
 set number
 set incsearch
 set hlsearch
+set smartindent
+set smarttab
 set mouse=a
 set cursorline
 set lcs=trail:█
 set colorcolumn=100
+set tabstop=4
 colorscheme tender
 
 " Plugins configurations
 let NERDTreeIgnore = ['\.pyc$']
-nmap <C-P> :NERDTreeToggle<cr>
+nmap <C-P> :NERDTreeToggle<cr>:silent NERDTreeMirror<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 function! RemoveTrailingSpaces()
