@@ -27,11 +27,11 @@ nmap <C-PageUp> :tabprev<cr>
 nmap <C-PageDown> :tabnext<cr>
 
 " Buffers
-nmap bl :ls<cr>
-nmap be bl:b<space>
-nmap ball :ball<cr>
+nmap Bl :ls<cr>
+nmap Be bl:b<space>
+nmap Ball :ball<cr>
 
-nmap bd :bd<cr>
+nmap Bd :bd<cr>
 
 
 " Pane navigation
@@ -81,7 +81,7 @@ function! DosToUnix()
 endfunction
 nmap D@U :call DosToUnix()<cr>
 
-autocmd BufWritePre * call RemoveTrailingSpaces()
+"autocmd BufWritePre * call RemoveTrailingSpaces()
 autocmd BufWritePost *.py call Flake8()
 
 " Lightline
