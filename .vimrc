@@ -28,7 +28,7 @@ nmap <C-PageDown> :tabnext<cr>
 
 " Buffers
 nmap Bl :ls<cr>
-nmap Be bl:b<space>
+nmap Be Bl:b<space>
 nmap Ball :ball<cr>
 
 nmap Bd :bd<cr>
