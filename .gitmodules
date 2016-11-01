@@ -40,3 +40,6 @@
 [submodule "bundle/plantuml-syntax"]
 	path = bundle/plantuml-syntax
 	url = https://github.com/aklt/plantuml-syntax
+[submodule "bundle/vim-handlebars"]
+	path = bundle/vim-handlebars
+	url = git://github.com/nono/vim-handlebars.git
