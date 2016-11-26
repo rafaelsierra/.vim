@@ -62,6 +62,7 @@ set cursorline
 set lcs=trail:█
 set colorcolumn=100
 set tabstop=4
+imap <C-v> <esc>"+gPa
 colorscheme tender
 
 " Plugins configurations
