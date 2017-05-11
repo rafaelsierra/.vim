@@ -67,7 +67,7 @@ colorscheme tender
 
 " Plugins configurations
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '\.git$', '\.swp$']
+let NERDTreeIgnore = ['\.pyc$', '\.git$', '\.swp$', '__pycache__']
 nmap <C-P> :NERDTreeToggle<cr>:silent NERDTreeMirror<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
