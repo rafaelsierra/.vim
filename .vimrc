@@ -83,6 +83,9 @@ function! DosToUnix()
 endfunction
 nmap D@U :call DosToUnix()<cr>
 
+" Tagbar
+nmap <C-O> :TagbarToggle
+
 "autocmd BufWritePre * call RemoveTrailingSpaces()
 autocmd BufWritePost *.py call Flake8()
 
