@@ -2,23 +2,28 @@ FROM alpine
 
 RUN sh -c "\
   apk update && \
-  apk add vim python3 ack git go rust cargo bash sudo &&\ 
+  apk add vim python3 ack git go rust cargo bash sudo openssh-server shadow &&\
   pip3 install jedi \
 "
-
-ENV USER rafael
-ENV HOME /home/rafael
-ENV UID 1000
-ENV TERM xterm-256color
+ARG USER
+ARG UID
+ENV USER ${USER}
+ENV HOME=/home/${USER}
+ENV UID=${UID}
 
 RUN adduser -D -h $HOME -u $UID -s /bin/bash $USER
-ENV PS1 '$USER@docker-vim \w$ '
+RUN usermod -p '*' $USER
+
 WORKDIR $HOME
 
 RUN printf "%s ALL=(ALL) NOPASSWD: ALL\n" $USER > /etc/sudoers.d/$USER
-USER $USER
 
 COPY . .vim/
 COPY .vimrc .
+COPY sshd_config /etc/ssh/
+COPY entrypoint.sh /entrypoint.sh
 
-CMD vim
+RUN chown -R $USER .vimrc .vim
+
+EXPOSE 22
+ENTRYPOINT ["/entrypoint.sh"]

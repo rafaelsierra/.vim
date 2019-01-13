@@ -1,0 +1,4 @@
+AllowAgentForwarding no
+AuthorizedKeysFile	.ssh/authorized_keys
+PasswordAuthentication no
+PermitRootLogin no
