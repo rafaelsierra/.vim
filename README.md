@@ -10,14 +10,16 @@ installed
 ## How?
 
 1. Build the docker image:
-  * `docker build -t vim --build-arg USER=$(whoami) --build-arg UID=$(id -u) .`
+   1. `docker build -t vim --build-arg USER=$(whoami) --build-arg UID=$(id -u) .`
+   
 1. Start the server:
-  * `./start.sh`
-  * Enter a password for the private key (optional but recommended)
-  * Save the given key at `~/.ssh/id_rsa-vim` and change its permission to `400`
+   * `./start.sh`
+   * Enter a password for the private key (optional but recommended)
+   * Save the given key at `~/.ssh/id_rsa-vim` and change its permission to `400`
+   
 1. Make a link from `vim.sh` somewhere into your `$PATH` with whatever name you want (I use vimd)
 1. Call `vim.sh <filename>`
-  * You can only call `vim.sh` with a filename or without anything. No other `vim` argument is
+   * You can only call `vim.sh` with a filename or without anything. No other `vim` argument is
   supported
 
 ## Behind the scenes
@@ -52,7 +54,7 @@ start a new container with the same key as before.
 ```
 $ docker container ls |grep vim
 e25469a6d67a        vim:snapshot        "/usr/sbin/sshd -D"   3 minutes ago       Up 3 minutes        127.0.0.1:60022->22/tcp   distracted_bohr
-$ docker commit distracted_bohr vim:snapshot
+$ docker commit e25469a6d67a vim:snapshot
 ```
 
 ## Issues
