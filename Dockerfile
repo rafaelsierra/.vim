@@ -3,7 +3,7 @@ FROM alpine
 RUN sh -c "\
   apk update && \
   apk add vim python3 ack git go rust cargo bash sudo openssh-server shadow &&\
-  pip3 install jedi \
+  pip3 install jedi flake8 \
 "
 ARG USER
 ARG UID
