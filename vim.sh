@@ -8,5 +8,5 @@ if [ -s "$1" ]; then
 else
     DIRNAME=/host$(pwd)
 fi
-ssh  -t -i ~/.ssh/id_rsa-vim -p 60022 $USER@localhost "cd $DIRNAME && vim $FILENAME"
+ssh -X -Y -t -i ~/.ssh/id_rsa-vim -p 60022 $USER@localhost "cd $DIRNAME && gvim $FILENAME"
 

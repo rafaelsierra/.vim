@@ -1,12 +1,6 @@
 #!/bin/bash
 
 #
-# Alpine will not create host ssh keys by default
-#
-printf "Generating SSH host keys\n"
-ssh-keygen -A >/dev/null
-
-#
 # Creates a private key to access the container
 # The user has a chance to enter a password if so desired
 #
@@ -26,4 +20,5 @@ clear
 # Starts ssh server
 #
 printf "Starting SSH server...\n"
+mkdir -p /run/sshd
 /usr/sbin/sshd -D
