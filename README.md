@@ -1,5 +1,7 @@
 # VIM inside Docker
 
+MacOS requires [XQuartz](https://www.xquartz.org/)
+
 ## Why?
 
 I have a bunch of different computers which I use to do stuff, including Raspbian, Ubuntu in a
@@ -59,7 +61,6 @@ $ docker commit e25469a6d67a vim:snapshot
 
 ## Issues
 
-* At the moment, `Shift+Up/Down` does not jump 5 lines
 * `Command+C` will not copy selected text on Mac
 * Calling `./vim.sh new-file` will not imply that you are creating a new file
 * Your user has sudo powers inside the container
