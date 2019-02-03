@@ -1,6 +1,0 @@
-AllowAgentForwarding no
-AuthorizedKeysFile	.ssh/authorized_keys
-PasswordAuthentication no
-PermitRootLogin no
-X11Forwarding yes
-X11UseLocalhost no
